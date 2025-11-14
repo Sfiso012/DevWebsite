@@ -28,13 +28,13 @@ const experienceData = [
     {
         year: "2023",
         title: "BCX (Business Connexion)",
-        subtitle: "IT Systems Development Intern – Data Science Specialization",
+        subtitle: "Data Scientist Intern",
         status: "specialization",
         icon: <Award className="w-6 h-6" />,
         iconPath: "/icons/bcx.png",
         logoSize: "w-6 h-6",
         description:
-            "Worked on a speech sentiment analysis system using deep learning (CNNs, RNNs, Transformers). Completed NQF 5 in IT Systems Development."
+            "Built an end-to-end Speech Sentiment Analysis system for call-center customer satisfaction monitoring. Performed data labeling, EDA, and audio preprocessing (MFCCs, spectrograms, augmentation), and trained deep learning models using CNNs, RNNs, and Transformers. Delivered and deployed the final prototype."
     },
     {
         year: "2022",

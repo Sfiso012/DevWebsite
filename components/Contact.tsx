@@ -1,7 +1,8 @@
+// components/Contact.tsx - LAYOUT 4: Minimal Dark
 'use client'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { Mail, Phone, MapPin, Send, Linkedin, Github, MessageCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, Linkedin, Github, MessageCircle, ArrowRight } from 'lucide-react'
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -18,26 +19,38 @@ export default function Contact() {
         setResult(null)
 
         try {
-            const response = await fetch('/api/contact', {
+            const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    service_id: 'service_makotzh',
+                    template_id: 'template_kdwpjzi',
+                    user_id: 'hgnzBjw48kq1cWWlW',
+                    template_params: {
+                        from_name: formData.name,
+                        from_email: formData.email,
+                        message: formData.message,
+                        to_email: 'emmanuelnkossi@outlook.com',
+                        subject: `New Portfolio Message from ${formData.name}`
+                    }
+                }),
             })
 
-            const data = await response.json()
-
             if (response.ok) {
-                setResult({ success: true, message: data.message || "Message sent successfully! I'll get back to you soon." })
-                setFormData({ name: '', email: '', message: '' }) // Reset form
+                setResult({
+                    success: true,
+                    message: "✅ Your message has been sent. I'll get back to you soon."
+                })
+                setFormData({ name: '', email: '', message: '' })
             } else {
-                setResult({ success: false, message: data.error || 'Failed to send message. Please try again.' })
+                throw new Error('Failed to send message')
             }
         } catch (error) {
             setResult({
                 success: false,
-                message: 'Network error. Please try again.'
+                message: "❌ Please email me directly at: emmanuelnkossi@outlook.com"
             })
         } finally {
             setIsLoading(false)
@@ -53,34 +66,28 @@ export default function Contact() {
 
     const socialLinks = [
         {
-            icon: <Linkedin className="w-5 h-5" />,
+            icon: <Linkedin className="w-4 h-4" />,
             href: "https://www.linkedin.com/in/emmanuel-nkosi",
-            label: "LinkedIn",
-            color: 'hover:bg-blue-500'
+            label: "LinkedIn"
         },
         {
-            icon: <Github className="w-5 h-5" />,
+            icon: <Github className="w-4 h-4" />,
             href: "https://github.com/Sfiso505",
-            label: "GitHub",
-            color: 'hover:bg-gray-700'
+            label: "GitHub"
         },
         {
-            icon: <MessageCircle className="w-5 h-5" />,
+            icon: <MessageCircle className="w-4 h-4" />,
             href: "https://wa.me/27691823052?text=Hi%20Emmanuel,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!",
-            label: "WhatsApp",
-            color: 'hover:bg-green-500'
+            label: "WhatsApp"
         }
     ]
 
     return (
-        <section
-            id="contact"
-            className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-blue-950 relative overflow-hidden"
-        >
-            {/* Soft Gradient Orbs */}
-            <div className="absolute inset-0">
-                <div className="absolute top-0 left-0 w-96 h-96 bg-green-400/20 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"></div>
+        <section id="contact" className="py-20 bg-gray-900 relative overflow-hidden">
+            {/* Minimal Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-gray-800 rounded-full blur-3xl opacity-50"></div>
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-gray-800 rounded-full blur-3xl opacity-50"></div>
             </div>
 
             <div className="container mx-auto px-4 relative z-10">
@@ -91,79 +98,74 @@ export default function Contact() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-5xl md:text-6xl font-black mb-4 text-white">
-                        LET'S <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent">BUILD</span>
+                    <h2 className="text-4xl md:text-5xl font-light text-white mb-4">
+                        Get In <span className="font-semibold text-gray-100">Touch</span>
                     </h2>
-                    <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-                        Got a revolutionary idea? Need a tech partner? Let's create something innovative together.
+                    <div className="w-20 h-0.5 bg-gray-600 mx-auto mb-6"></div>
+                    <p className="text-gray-400 max-w-md mx-auto">
+                        Interested in working together? Let's start a conversation.
                     </p>
                 </motion.div>
 
-                {/* Content */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-                    {/* Left: Info */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-5xl mx-auto">
+                    {/* Left: Contact Info */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
                         className="space-y-8"
                     >
-                        <h3 className="text-3xl font-bold text-white mb-8">GET IN TOUCH</h3>
-
                         <div className="space-y-6">
                             <motion.div
-                                whileHover={{ x: 10 }}
-                                className="flex items-center gap-4 p-4 bg-gray-800/60 rounded-2xl border border-gray-700 hover:border-green-400 transition-all"
+                                whileHover={{ x: 5 }}
+                                className="flex items-center gap-4 p-4 border-l-4 border-gray-600 hover:border-gray-400 transition-all duration-300"
                             >
-                                <div className="w-12 h-12 bg-green-400 rounded-xl flex items-center justify-center">
-                                    <Mail className="w-6 h-6 text-black" />
-                                </div>
+                                <Mail className="w-5 h-5 text-gray-400" />
                                 <div>
                                     <p className="text-gray-400 text-sm">Email</p>
-                                    <p className="text-white font-semibold">emmanuelhkossi@outlook.com</p>
+                                    <a href="mailto:emmanuelnkossi@outlook.com" className="text-white hover:text-gray-300 transition-colors">
+                                        emmanuelnkossi@outlook.com
+                                    </a>
                                 </div>
                             </motion.div>
 
                             <motion.div
-                                whileHover={{ x: 10 }}
-                                className="flex items-center gap-4 p-4 bg-gray-800/60 rounded-2xl border border-gray-700 hover:border-purple-400 transition-all"
+                                whileHover={{ x: 5 }}
+                                className="flex items-center gap-4 p-4 border-l-4 border-gray-600 hover:border-gray-400 transition-all duration-300"
                             >
-                                <div className="w-12 h-12 bg-purple-400 rounded-xl flex items-center justify-center">
-                                    <Phone className="w-6 h-6 text-black" />
-                                </div>
+                                <Phone className="w-5 h-5 text-gray-400" />
                                 <div>
                                     <p className="text-gray-400 text-sm">Phone</p>
-                                    <p className="text-white font-semibold">+27 69 182 3052</p>
+                                    <a href="tel:+27691823052" className="text-white hover:text-gray-300 transition-colors">
+                                        +27 69 182 3052
+                                    </a>
                                 </div>
                             </motion.div>
 
                             <motion.div
-                                whileHover={{ x: 10 }}
-                                className="flex items-center gap-4 p-4 bg-gray-800/60 rounded-2xl border border-gray-700 hover:border-cyan-400 transition-all"
+                                whileHover={{ x: 5 }}
+                                className="flex items-center gap-4 p-4 border-l-4 border-gray-600 hover:border-gray-400 transition-all duration-300"
                             >
-                                <div className="w-12 h-12 bg-cyan-400 rounded-xl flex items-center justify-center">
-                                    <MapPin className="w-6 h-6 text-black" />
-                                </div>
+                                <MapPin className="w-5 h-5 text-gray-400" />
                                 <div>
                                     <p className="text-gray-400 text-sm">Location</p>
-                                    <p className="text-white font-semibold">Pretoria, South Africa</p>
+                                    <p className="text-white">Pretoria, South Africa</p>
                                 </div>
                             </motion.div>
                         </div>
 
-                        {/* Socials - UPDATED WITH WORKING LINKS */}
-                        <div className="pt-8">
-                            <h4 className="text-xl font-bold text-white mb-6">FOLLOW THE GRIND</h4>
-                            <div className="flex gap-4">
+                        {/* Social Links */}
+                        <div className="pt-4">
+                            <div className="flex gap-3">
                                 {socialLinks.map((social, i) => (
                                     <motion.a
                                         key={i}
-                                        whileHover={{ scale: 1.1, y: -5 }}
-                                        whileTap={{ scale: 0.9 }}
+                                        whileHover={{ scale: 1.1, y: -2 }}
+                                        whileTap={{ scale: 0.95 }}
                                         href={social.href}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className={`w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center text-white border border-gray-700 ${social.color} transition-all duration-300`}
+                                        className="w-8 h-8 bg-gray-800 rounded flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-300"
                                         aria-label={social.label}
                                     >
                                         {social.icon}
@@ -173,74 +175,58 @@ export default function Contact() {
                         </div>
                     </motion.div>
 
-                    {/* Right: Form - UPDATED WITH REAL FUNCTIONALITY */}
+                    {/* Right: Contact Form */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="bg-gray-800/40 backdrop-blur-lg rounded-3xl p-8 border border-gray-700 shadow-xl shadow-black/10"
+                        className="space-y-6"
                     >
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div>
-                                <label htmlFor="name" className="block text-white font-semibold mb-2">
-                                    Your Name
-                                </label>
                                 <input
                                     type="text"
-                                    id="name"
                                     name="name"
                                     value={formData.name}
                                     onChange={handleChange}
                                     required
                                     disabled={isLoading}
-                                    className="w-full bg-gray-900/60 border border-gray-700 rounded-2xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-400/30 transition-all disabled:opacity-50"
-                                    placeholder="Enter your name"
+                                    className="w-full bg-transparent border-b border-gray-600 px-2 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gray-400 transition-all disabled:opacity-50"
+                                    placeholder="Your Name"
                                 />
                             </div>
 
                             <div>
-                                <label htmlFor="email" className="block text-white font-semibold mb-2">
-                                    Your Email
-                                </label>
                                 <input
                                     type="email"
-                                    id="email"
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
                                     disabled={isLoading}
-                                    className="w-full bg-gray-900/60 border border-gray-700 rounded-2xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-400/30 transition-all disabled:opacity-50"
-                                    placeholder="Enter your email"
+                                    className="w-full bg-transparent border-b border-gray-600 px-2 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gray-400 transition-all disabled:opacity-50"
+                                    placeholder="Your Email"
                                 />
                             </div>
 
                             <div>
-                                <label htmlFor="message" className="block text-white font-semibold mb-2">
-                                    Your Message
-                                </label>
                                 <textarea
-                                    id="message"
                                     name="message"
                                     value={formData.message}
                                     onChange={handleChange}
                                     required
                                     disabled={isLoading}
-                                    rows={5}
-                                    className="w-full bg-gray-900/60 border border-gray-700 rounded-2xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-400/30 transition-all resize-none disabled:opacity-50"
-                                    placeholder="What revolutionary idea do you want to build?"
+                                    rows={4}
+                                    className="w-full bg-transparent border-b border-gray-600 px-2 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gray-400 transition-all resize-none disabled:opacity-50"
+                                    placeholder="Your Message"
                                 />
                             </div>
 
-                            {/* Result Message */}
                             {result && (
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className={`p-4 rounded-2xl ${result.success
-                                        ? 'bg-green-500/20 text-green-300 border border-green-500/30'
-                                        : 'bg-red-500/20 text-red-300 border border-red-500/30'
-                                        }`}
+                                    className={`text-sm ${result.success ? 'text-gray-400' : 'text-gray-500'}`}
                                 >
                                     {result.message}
                                 </motion.div>
@@ -249,19 +235,19 @@ export default function Contact() {
                             <motion.button
                                 type="submit"
                                 disabled={isLoading}
-                                whileHover={{ scale: isLoading ? 1 : 1.05 }}
-                                whileTap={{ scale: isLoading ? 1 : 0.95 }}
-                                className="w-full bg-gradient-to-r from-green-400 to-purple-500 hover:from-green-500 hover:to-purple-600 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all flex items-center justify-center gap-3 shadow-2xl shadow-green-400/30 disabled:opacity-50 disabled:cursor-not-allowed"
+                                whileHover={{ x: 5 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="flex items-center gap-2 text-white hover:text-gray-300 transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
                             >
                                 {isLoading ? (
                                     <>
-                                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                                        SENDING...
+                                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                        Sending...
                                     </>
                                 ) : (
                                     <>
-                                        <Send className="w-5 h-5" />
-                                        SEND MESSAGE
+                                        Send Message
+                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                     </>
                                 )}
                             </motion.button>
@@ -274,9 +260,9 @@ export default function Contact() {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.5 }}
-                    className="text-center mt-16 pt-8 border-t border-gray-700"
+                    className="text-center mt-16 pt-8 border-t border-gray-800"
                 >
-                    <p className="text-gray-400">
+                    <p className="text-gray-500 text-sm">
                         Crafted with 💚 and curiosity by <span className="text-white font-semibold">Emmanuel Sfiso Nkosi</span> • {new Date().getFullYear()}
                     </p>
                 </motion.div>

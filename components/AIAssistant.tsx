@@ -1,7 +1,6 @@
-// components/AIAssistant.tsx
 'use client'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MessageCircle, X, Brain, Zap, Send } from 'lucide-react'
+import { MessageCircle, X, Send } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 
 interface Message {
@@ -14,7 +13,7 @@ export default function AIAssistant() {
     const [isOpen, setIsOpen] = useState(false)
     const [messages, setMessages] = useState<Message[]>([
         {
-            text: "Hello! I'm your dev partner. Ask me about The Grind, Tech Stack, Projects, Mindset, or Contact!",
+            text: "Hello! I'm here to help you learn more about Emmanuel. Ask me about his tech stack, projects, experience, or how to get in touch.",
             isUser: false,
             timestamp: new Date()
         }
@@ -23,7 +22,6 @@ export default function AIAssistant() {
     const [isLoading, setIsLoading] = useState(false)
     const messagesEndRef = useRef<HTMLDivElement>(null)
 
-    // Auto-scroll to bottom when messages change
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
     }, [messages])
@@ -35,7 +33,6 @@ export default function AIAssistant() {
         const userMessage = inputMessage.trim()
         setInputMessage('')
 
-        // Add user message
         setMessages(prev => [...prev, {
             text: userMessage,
             isUser: true,
@@ -55,16 +52,14 @@ export default function AIAssistant() {
 
             const data = await response.json()
 
-            // Add AI response
             setMessages(prev => [...prev, {
                 text: data.text,
                 isUser: false,
                 timestamp: new Date()
             }])
         } catch (error) {
-            // Fallback response if API fails
             setMessages(prev => [...prev, {
-                text: "I'm optimizing my AI capabilities right now! 🔧 Check out my projects below or try again in a moment.",
+                text: "I'm currently optimizing my responses. Feel free to browse the portfolio below or try again shortly.",
                 isUser: false,
                 timestamp: new Date()
             }])
@@ -74,15 +69,14 @@ export default function AIAssistant() {
     }
 
     const quickQuestions = [
-        "What's your tech stack?",
-        "Tell me about your projects",
-        "What's your mindset?",
-        "How can I contact you?"
+        "Tech stack?",
+        "Recent projects?",
+        "Work experience?",
+        "Contact info?"
     ]
 
     const handleQuickQuestion = (question: string) => {
         setInputMessage(question)
-        // Auto-submit after a brief delay for better UX
         setTimeout(() => {
             const fakeEvent = { preventDefault: () => { } } as React.FormEvent
             handleSubmit(fakeEvent)
@@ -91,104 +85,84 @@ export default function AIAssistant() {
 
     return (
         <>
-            {/* Floating AI Trigger - Enhanced */}
+            {/* Floating Trigger - Dark Gray Theme */}
             <motion.button
                 onClick={() => setIsOpen(true)}
-                className="fixed bottom-8 right-8 z-50 group"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+                className="fixed bottom-6 right-6 z-50"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
             >
                 <div className="relative">
-                    {/* Orbital Rings */}
                     <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                        className="absolute -inset-4 border-2 border-green-400 rounded-full opacity-50"
-                    />
-                    <motion.div
-                        animate={{ rotate: -360 }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                        className="absolute -inset-6 border border-purple-400 rounded-full opacity-30"
-                    />
-
-                    {/* Pulsing notification dot */}
-                    <motion.div
-                        animate={{ scale: [1, 1.2, 1] }}
+                        animate={{
+                            scale: [1, 1.3, 1],
+                            opacity: [0.3, 0.6, 0.3]
+                        }}
                         transition={{ duration: 2, repeat: Infinity }}
-                        className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white"
+                        className="absolute inset-0 bg-gray-600 rounded-full"
                     />
-
-                    {/* Main Button */}
-                    <div className="relative w-16 h-16 bg-gradient-to-br from-green-400 to-purple-500 rounded-2xl flex items-center justify-center shadow-2xl shadow-green-500/30">
-                        <Brain className="w-8 h-8 text-white" />
+                    <div className="relative w-14 h-14 bg-gray-800 rounded-full flex items-center justify-center border-2 border-gray-600 shadow-xl">
+                        <motion.div
+                            animate={{ rotate: [0, -5, 0, 5, 0] }}
+                            transition={{ duration: 3, repeat: Infinity }}
+                        >
+                            <MessageCircle className="w-7 h-7 text-gray-300" />
+                        </motion.div>
                     </div>
                 </div>
             </motion.button>
 
-            {/* AI Assistant Modal */}
+            {/* Modal */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.8 }}
-                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
                     >
                         <motion.div
-                            initial={{ y: 50, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            className="bg-white dark:bg-gray-900 rounded-3xl w-full max-w-2xl h-[600px] border-2 border-green-400 shadow-2xl relative overflow-hidden flex flex-col"
+                            initial={{ scale: 0.9, y: 20 }}
+                            animate={{ scale: 1, y: 0 }}
+                            exit={{ scale: 0.9, y: 20 }}
+                            className="bg-gray-800 rounded-xl w-full max-w-md h-[500px] border border-gray-700 shadow-2xl flex flex-col"
                         >
-                            {/* Header */}
-                            <div className="bg-gradient-to-r from-green-400 to-purple-500 p-4 text-white">
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center gap-3">
-                                        <Zap className="w-6 h-6" />
-                                        <div>
-                                            <h3 className="font-bold text-lg">DevG AI Assistant</h3>
-                                            <p className="text-sm opacity-80">Always grinding</p>
-                                        </div>
-                                    </div>
-                                    <button
-                                        onClick={() => setIsOpen(false)}
-                                        className="p-2 hover:bg-white/20 rounded-full transition-colors"
-                                    >
-                                        <X className="w-5 h-5" />
-                                    </button>
+                            {/* Header - Dark Gray Theme */}
+                            <div className="flex items-center justify-between p-4 border-b border-gray-700 bg-gradient-to-r from-gray-700/50 to-gray-800/50">
+                                <div className="flex items-center gap-2">
+                                    <MessageCircle className="w-5 h-5 text-gray-300" />
+                                    <h3 className="font-bold text-white">AI Assistant</h3>
                                 </div>
+                                <button
+                                    onClick={() => setIsOpen(false)}
+                                    className="p-1 hover:bg-gray-700 rounded transition-colors"
+                                >
+                                    <X className="w-4 h-4 text-gray-400" />
+                                </button>
                             </div>
 
-                            {/* Chat Messages */}
+                            {/* Messages */}
                             <div className="flex-1 p-4 overflow-y-auto">
-                                <div className="space-y-4">
+                                <div className="space-y-3">
                                     {messages.map((message, index) => (
                                         <motion.div
                                             key={index}
-                                            initial={{ opacity: 0, y: 20 }}
+                                            initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
-                                            className={`flex items-start gap-3 ${message.isUser ? 'flex-row-reverse' : ''}`}
+                                            className={`flex gap-2 ${message.isUser ? 'flex-row-reverse' : ''}`}
                                         >
-                                            {/* AI Avatar */}
-                                            {!message.isUser && (
-                                                <div className="w-8 h-8 bg-gradient-to-br from-green-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                                                    <Brain className="w-4 h-4 text-white" />
-                                                </div>
-                                            )}
-
-                                            {/* User Avatar */}
-                                            {message.isUser && (
-                                                <div className="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center flex-shrink-0">
-                                                    <span className="text-xs text-white">You</span>
-                                                </div>
-                                            )}
-
-                                            {/* Message Bubble */}
-                                            <div className={`rounded-2xl p-4 max-w-[80%] ${message.isUser
-                                                ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
-                                                : 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white'
+                                            <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${message.isUser
+                                                ? 'bg-gray-600 text-white'
+                                                : 'bg-gray-700 text-gray-300'
+                                                }`}>
+                                                {message.isUser ? 'Y' : 'AI'}
+                                            </div>
+                                            <div className={`max-w-[80%] rounded-lg px-3 py-2 ${message.isUser
+                                                ? 'bg-gray-600 text-white'
+                                                : 'bg-gray-700/50 text-gray-200 border border-gray-600'
                                                 }`}>
                                                 <p className="text-sm">{message.text}</p>
-                                                <p className={`text-xs mt-1 ${message.isUser ? 'text-blue-100' : 'text-gray-500'
+                                                <p className={`text-xs mt-1 ${message.isUser ? 'text-gray-400' : 'text-gray-500'
                                                     }`}>
                                                     {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                                 </p>
@@ -196,32 +170,31 @@ export default function AIAssistant() {
                                         </motion.div>
                                     ))}
 
-                                    {/* Loading indicator */}
                                     {isLoading && (
                                         <motion.div
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            className="flex items-start gap-3"
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            className="flex gap-2"
                                         >
-                                            <div className="w-8 h-8 bg-gradient-to-br from-green-400 to-purple-500 rounded-full flex items-center justify-center">
-                                                <Brain className="w-4 h-4 text-white" />
+                                            <div className="w-6 h-6 rounded-full bg-gray-700 flex items-center justify-center text-xs text-gray-300">
+                                                AI
                                             </div>
-                                            <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl p-4">
-                                                <div className="flex space-x-2">
+                                            <div className="bg-gray-700/50 rounded-lg px-3 py-2 border border-gray-600">
+                                                <div className="flex space-x-1">
                                                     <motion.div
-                                                        animate={{ scale: [1, 1.5, 1] }}
+                                                        animate={{ scale: [1, 1.2, 1] }}
                                                         transition={{ duration: 1, repeat: Infinity }}
-                                                        className="w-2 h-2 bg-green-400 rounded-full"
+                                                        className="w-1.5 h-1.5 bg-gray-400 rounded-full"
                                                     />
                                                     <motion.div
-                                                        animate={{ scale: [1, 1.5, 1] }}
+                                                        animate={{ scale: [1, 1.2, 1] }}
                                                         transition={{ duration: 1, repeat: Infinity, delay: 0.2 }}
-                                                        className="w-2 h-2 bg-green-400 rounded-full"
+                                                        className="w-1.5 h-1.5 bg-gray-400 rounded-full"
                                                     />
                                                     <motion.div
-                                                        animate={{ scale: [1, 1.5, 1] }}
+                                                        animate={{ scale: [1, 1.2, 1] }}
                                                         transition={{ duration: 1, repeat: Infinity, delay: 0.4 }}
-                                                        className="w-2 h-2 bg-green-400 rounded-full"
+                                                        className="w-1.5 h-1.5 bg-gray-400 rounded-full"
                                                     />
                                                 </div>
                                             </div>
@@ -234,14 +207,14 @@ export default function AIAssistant() {
                             {/* Quick Questions */}
                             {messages.length <= 2 && (
                                 <div className="px-4 pb-2">
-                                    <div className="flex flex-wrap gap-2">
+                                    <div className="flex flex-wrap gap-1">
                                         {quickQuestions.map((question, index) => (
                                             <motion.button
                                                 key={index}
                                                 onClick={() => handleQuickQuestion(question)}
-                                                whileHover={{ scale: 1.05 }}
-                                                whileTap={{ scale: 0.95 }}
-                                                className="px-3 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                                                whileHover={{ scale: 1.02 }}
+                                                whileTap={{ scale: 0.98 }}
+                                                className="px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded hover:bg-gray-600 transition-colors border border-gray-600"
                                             >
                                                 {question}
                                             </motion.button>
@@ -250,21 +223,21 @@ export default function AIAssistant() {
                                 </div>
                             )}
 
-                            {/* Input Area */}
-                            <div className="border-t border-gray-200 dark:border-gray-700 p-4">
+                            {/* Input */}
+                            <div className="p-4 border-t border-gray-700">
                                 <form onSubmit={handleSubmit} className="flex gap-2">
                                     <input
                                         type="text"
                                         value={inputMessage}
                                         onChange={(e) => setInputMessage(e.target.value)}
-                                        placeholder="Ask about the hustle..."
-                                        className="flex-1 bg-gray-100 dark:bg-gray-800 rounded-2xl px-4 py-3 text-sm border-0 focus:ring-2 focus:ring-green-400 outline-none"
+                                        placeholder="Ask about Emmanuel..."
+                                        className="flex-1 bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gray-500 transition-colors text-white placeholder-gray-400"
                                         disabled={isLoading}
                                     />
                                     <button
                                         type="submit"
                                         disabled={isLoading || !inputMessage.trim()}
-                                        className="bg-gradient-to-r from-green-400 to-purple-500 text-white rounded-2xl px-6 py-3 font-bold hover:opacity-90 disabled:opacity-50 transition-opacity flex items-center gap-2"
+                                        className="bg-gray-600 hover:bg-gray-500 text-white p-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
                                         {isLoading ? (
                                             <motion.div
@@ -275,7 +248,6 @@ export default function AIAssistant() {
                                         ) : (
                                             <Send className="w-4 h-4" />
                                         )}
-                                        Send
                                     </button>
                                 </form>
                             </div>

@@ -29,21 +29,22 @@ const skills = [
         projects: ["ML Model Deployment", "AI Solutions", "Predictive Analytics"]
     },
     {
-        name: "Full-Stack Engineering",
+        name: "Software Engineering",
         icon: <Code className="w-12 h-12 text-emerald-500" />,
         gradient: "from-green-100 via-emerald-50 to-teal-50",
         description:
-            "Angular with Dependency Injection, API Integration, Swagger, Web App Deployment, Frontend-Backend Integration",
-        projects: ["Web Applications", "API Development", "System Integration"]
+            "Angular with API Integration, Swagger, Web App Deployment",
+        projects: ["AI/Chatbot Features", "Microservices & Deployment"]
     },
     {
-        name: "Data Engineering & Analytics",
+        name: "Data Science & Analytics",
         icon: <Database className="w-12 h-12 text-amber-500" />,
         gradient: "from-amber-50 via-yellow-50 to-orange-50",
         description:
-            "Real-time Metrics (Grafana), Data Pipelines, Database Architecture, ETL Processes, Business Intelligence",
-        projects: ["Data Pipelines", "Analytics Dashboards", "Database Design"]
+            "EDA(Exploratory Data Analysis), Data preprocessing, Feature Engineering, Supervised and Unsupervised Machine Learning",
+        projects: ["ML Models", "Analytics Dashboards", "Predictive Insights"]
     },
+
     {
         name: "Generative AI & LLM Systems",
         icon: <MessageCircle className="w-12 h-12 text-pink-500" />,
@@ -156,8 +157,8 @@ export default function SkillsCarousel() {
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => setCurrentIndex(i)}
                                 className={`p-4 rounded-2xl border transition-all duration-300 ${i === currentIndex
-                                        ? 'bg-white border-gray-300 shadow-md'
-                                        : 'bg-white/80 border-gray-200 hover:bg-white'
+                                    ? 'bg-white border-gray-300 shadow-md'
+                                    : 'bg-white/80 border-gray-200 hover:bg-white'
                                     }`}
                             >
                                 <div className="text-center text-gray-700">
@@ -182,7 +183,7 @@ export default function SkillsCarousel() {
                         { label: "AI Domains", value: "6+" },
                         { label: "Tech Stacks", value: "15+" },
                         { label: "Projects", value: "20+" },
-                        { label: "Years", value: "3+" }
+                        { label: "Years", value: "2+" }
                     ].map((stat, i) => (
                         <div
                             key={i}
