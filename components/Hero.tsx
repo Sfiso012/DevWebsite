@@ -75,7 +75,7 @@ export default function HeroOrbital() {
         <section
             ref={ref}
             onMouseMove={handleMouseMove}
-            className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50"
+            className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50 pt-20 lg:pt-24"
         >
             {/* Binary Data Streams */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -96,13 +96,13 @@ export default function HeroOrbital() {
                 style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
                 className="container mx-auto px-4 relative z-10"
             >
-                <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     {/* Left - Enhanced Orbital Profile System */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1 }}
-                        className="relative flex justify-center lg:justify-end"
+                        className="relative flex justify-center lg:justify-end order-2 lg:order-1"
                         style={{ transform: "translateZ(40px)" }}
                     >
                         <div className="relative">
@@ -111,7 +111,7 @@ export default function HeroOrbital() {
                                 initial={{ scale: 0, rotate: -180 }}
                                 animate={{ scale: 1, rotate: 0 }}
                                 transition={{ duration: 1.2, type: "spring" }}
-                                className="relative w-80 h-80 rounded-full overflow-hidden border-8 border-white shadow-2xl"
+                                className="relative w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-8 border-white shadow-2xl"
                             >
                                 {/* Watercolor Background Effect */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-white via-blue-50/80 to-cyan-50/60 opacity-90">
@@ -147,17 +147,20 @@ export default function HeroOrbital() {
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1, delay: 0.3 }}
-                        className="space-y-8"
+                        className="space-y-6 lg:space-y-8 order-1 lg:order-2"
                         style={{ transform: "translateZ(30px)" }}
                     >
-                        <div className="space-y-6">
+                        <div className="space-y-4 lg:space-y-6">
                             <motion.h1
-                                className="text-5xl lg:text-6xl font-light text-gray-900"
+                                className="text-4xl lg:text-5xl xl:text-6xl font-light text-gray-900 leading-tight"
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.5 }}
                             >
-                                Emmanuel <span className="font-semibold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Sfiso Nkosi</span>
+                                Emmanuel{" "}
+                                <span className="font-semibold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent block lg:inline">
+                                    Sfiso Nkosi
+                                </span>
                             </motion.h1>
 
                             <motion.div
@@ -167,7 +170,7 @@ export default function HeroOrbital() {
                                 className="h-1 bg-gradient-to-r from-blue-400 to-cyan-400"
                             />
 
-                            <div className="h-16">
+                            <div className="h-14 lg:h-16">
                                 <AnimatePresence mode="wait">
                                     <motion.h2
                                         key={currentProfession}
@@ -175,7 +178,7 @@ export default function HeroOrbital() {
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: -20 }}
                                         transition={{ duration: 0.5 }}
-                                        className="text-2xl text-gray-700 font-medium"
+                                        className="text-xl lg:text-2xl text-gray-700 font-medium"
                                     >
                                         {professions[currentProfession]}
                                     </motion.h2>
@@ -183,7 +186,7 @@ export default function HeroOrbital() {
                             </div>
 
                             <motion.p
-                                className="text-gray-600 text-lg leading-relaxed"
+                                className="text-gray-600 text-base lg:text-lg leading-relaxed"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 1.3 }}
@@ -199,7 +202,7 @@ export default function HeroOrbital() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 1.5 }}
-                            className="grid grid-cols-3 gap-4"
+                            className="grid grid-cols-3 gap-3 lg:gap-4"
                         >
                             {[
                                 { label: 'Data Science', sub: 'practitioner' },
@@ -212,12 +215,12 @@ export default function HeroOrbital() {
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: 1.7 + index * 0.1 }}
                                     whileHover={{ scale: 1.05, y: -2 }}
-                                    className="text-center p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-100 hover:border-blue-300 transition-all shadow-sm hover:shadow-md group"
+                                    className="text-center p-3 lg:p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-100 hover:border-blue-300 transition-all shadow-sm hover:shadow-md group"
                                 >
-                                    <div className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                    <div className="font-semibold text-gray-900 text-sm lg:text-base group-hover:text-blue-600 transition-colors">
                                         {item.label}
                                     </div>
-                                    <div className="text-gray-500 text-sm mt-1 group-hover:text-blue-500 transition-colors">
+                                    <div className="text-gray-500 text-xs lg:text-sm mt-1 group-hover:text-blue-500 transition-colors">
                                         {item.sub}
                                     </div>
                                 </motion.div>
@@ -229,13 +232,13 @@ export default function HeroOrbital() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 1.8 }}
-                            className="flex gap-4 pt-4"
+                            className="flex flex-col sm:flex-row gap-3 lg:gap-4 pt-2 lg:pt-4"
                         >
                             <motion.button
                                 whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={handleExploreWork}
-                                className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-3 font-medium text-sm hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 rounded-lg flex-1 group"
+                                className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 lg:px-8 py-3 font-medium text-sm hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 rounded-lg flex-1 group"
                             >
                                 <span className="flex items-center justify-center gap-2">
                                     Explore Work
@@ -252,7 +255,7 @@ export default function HeroOrbital() {
                                 whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={handleViewJourney}
-                                className="border border-gray-300 text-gray-700 px-8 py-3 font-medium text-sm hover:border-blue-400 hover:bg-blue-50 hover:text-blue-700 transition-all duration-300 rounded-lg flex-1 group"
+                                className="border border-gray-300 text-gray-700 px-6 lg:px-8 py-3 font-medium text-sm hover:border-blue-400 hover:bg-blue-50 hover:text-blue-700 transition-all duration-300 rounded-lg flex-1 group"
                             >
                                 <span className="flex items-center justify-center gap-2">
                                     View Journey
@@ -274,20 +277,21 @@ export default function HeroOrbital() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 2 }}
-                    className="absolute bottom-16 left-[45%]"
+                    className="absolute bottom-8 lg:bottom-16 left-1/2 transform -translate-x-1/2"
                 >
                     <motion.div
-                        animate={{ y: [0, 12, 0] }}
+                        animate={{ y: [0, 8, 0] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                         className="text-gray-400 hover:text-blue-500 transition-colors cursor-pointer flex justify-center"
+                        onClick={() => window.scrollBy({ top: window.innerHeight - 200, behavior: 'smooth' })}
                     >
-                        <ChevronDown className="w-6 h-6" />
+                        <ChevronDown className="w-5 h-5 lg:w-6 lg:h-6" />
                     </motion.div>
                     <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 2.5 }}
-                        className="text-gray-400 text-xs mt-2 text-center"
+                        className="text-gray-400 text-xs mt-2 text-center hidden lg:block"
                     >
                         Scroll to explore
                     </motion.p>
