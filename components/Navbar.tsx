@@ -60,20 +60,6 @@ export default function Navbar() {
                         </motion.a>
                     ))}
                 </div>
-
-                {/* Theme Toggle */}
-                <motion.button
-                    whileTap={{ rotate: 180 }}
-                    whileHover={{ scale: 1.1 }}
-                    onClick={toggleTheme}
-                    className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center border border-gray-300 hover:border-cyan-400 shadow-sm hover:shadow-[0_0_10px_#00eaff] transition-all"
-                >
-                    {theme === 'dark' ? (
-                        <Sun className="w-5 h-5 text-cyan-500" />
-                    ) : (
-                        <Moon className="w-5 h-5 text-cyan-500" />
-                    )}
-                </motion.button>
             </div>
         </motion.nav>
     )
