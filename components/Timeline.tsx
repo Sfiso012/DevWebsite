@@ -12,7 +12,7 @@ const experienceData = [
         iconPath: "/icons/wits-bm.png",
         logoSize: "w-8 h-8",
         description:
-            "Analysed over a million social-media records using advanced NLP and unsupervised learning (UMAP, HDBSCAN, topic modelling, NER, ABSA, and LLM-based labeling) to build a structured theme codebook. Produced insights, and helped productize the work by building Angular frontend, integrating backend APIs, and deploying models on Azure. My role blends data science, AI engineering, and hands-on software delivery."
+            "Analysed over a million social-media records using advanced NLP and unsupervised learning (UMAP, HDBSCAN, topic modelling, NER, ABSA, and LLM-based labeling) to build a structured theme codebook. Produced insights, and helped productize the work by building Angular frontend, integrating backend APIs, and deploying models on Azure. My role blends data science, AI engineering, and Software development."
     },
     {
         year: "2024",
