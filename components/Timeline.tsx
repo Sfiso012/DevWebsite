@@ -70,12 +70,12 @@ const educationData = [
         iconPath: "/icons/unisa.png",
         logoSize: "w-8 h-8",
         description:
-            "Accepted to build formal mathematical foundations for advanced analytics and data science."
+            "Accepted to build the academic background required to pursue my future degree in the tech and data fields."
     },
     {
         year: "2025",
         title: "IT Varsity",
-        subtitle: "National Certificate in Fullstack Development (NQF 5)",
+        subtitle: "National Certificate in Fullstack Development",
         status: "current",
         icon: <Code className="w-6 h-6" />,
         iconPath: "/icons/ITv-Logo.png",
@@ -86,7 +86,7 @@ const educationData = [
     {
         year: "2023",
         title: "Explore AI",
-        subtitle: "HCert in IT Systems Development – NQF 5 (Data Science)",
+        subtitle: "HCert in Information Technology: Systems Development (Data Science)",
         status: "specialization",
         icon: <Award className="w-6 h-6" />,
         iconPath: "/icons/explore.jpg",
