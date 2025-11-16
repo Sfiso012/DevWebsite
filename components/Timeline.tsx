@@ -12,7 +12,7 @@ const experienceData = [
         iconPath: "/icons/wits-bm.png",
         logoSize: "w-8 h-8",
         description:
-            "Turning complex, high-volume industry datasets into usable AI solutions. My recent work includes analysing over a million social-media records using advanced NLP and unsupervised learning techniques (UMAP, HDBSCAN, topic modelling, NER, ABSA, and LLM-driven labeling with LLaMA models) to build a structured codebook of themes and sentiment categories. After establishing the codebook, I generated insights by mapping patterns, identifying emerging issues, automating theme labeling, and developing interactive dashboards to help stakeholders interpret trends. I then helped productize these findings by building front-end interfaces in Angular, integrating backend APIs, and deploying models and applications on Azure. My role blends data science, AI engineering, and practical software delivery"
+            "Analysed over a million social-media records using advanced NLP and unsupervised learning (UMAP, HDBSCAN, topic modelling, NER, ABSA, and LLM-based labeling) to build a structured theme and sentiment codebook. Produced insights through pattern analysis and automated labeling, and helped productize the work by building Angular frontend, integrating backend APIs, and deploying models on Azure. My role blends data science, AI engineering, and hands-on software delivery."
     },
     {
         year: "2024",
