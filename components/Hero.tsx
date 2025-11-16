@@ -191,7 +191,10 @@ export default function HeroOrbital() {
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 1.3 }}
                             >
-I operate at the intersection where data science meets engineering. My focus is on building the bridge between a theoretical model and a functional, scalable application. I thrive on being functional and making impact on the full lifecycle, transforming raw data into a deployed, intelligent product that delivers tangible value.
+                                I operate at the intersection where data science meets engineering. 
+                                My focus is on building the bridge between a theoretical model and a functional, 
+                                scalable application. I thrive on being functional and making impact on the full lifecycle,
+                                transforming raw data into a deployed, intelligent product that delivers tangible value.
                             </motion.p>
                         </div>
 
