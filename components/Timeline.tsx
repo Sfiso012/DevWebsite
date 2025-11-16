@@ -6,7 +6,7 @@ const experienceData = [
     {
         year: "2024 – Present",
         title: "Wits Enterprise",
-        subtitle: "Data Scientist | AI Engineer",
+        subtitle: "Data Scientist",
         status: "professional",
         icon: <Briefcase className="w-6 h-6" />,
         iconPath: "/icons/wits-bm.png",
