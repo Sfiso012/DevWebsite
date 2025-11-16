@@ -75,7 +75,7 @@ const educationData = [
     {
         year: "2025",
         title: "IT Varsity",
-        subtitle: "National Certificate in Fullstack Development",
+        subtitle: "National Certificate(NQF 5) in Fullstack Development",
         status: "current",
         icon: <Code className="w-6 h-6" />,
         iconPath: "/icons/ITv-Logo.png",
