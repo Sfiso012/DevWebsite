@@ -62,7 +62,7 @@ const experienceData = [
 
 const educationData = [
     {
-        year: "2026 (Upcoming)",
+        year: "2026",
         title: "UNISA",
         subtitle: "Higher Certificate in Mathematics & Statistics",
         status: "future",
