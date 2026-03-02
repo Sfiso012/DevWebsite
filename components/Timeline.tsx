@@ -62,17 +62,6 @@ const experienceData = [
 
 const educationData = [
     {
-        year: "2026",
-        title: "UNISA",
-        subtitle: "Higher Certificate in Mathematics & Statistics",
-        status: "future",
-        icon: <Calendar className="w-6 h-6" />,
-        iconPath: "/icons/unisa.png",
-        logoSize: "w-8 h-8",
-        description:
-            "Accepted to build the academic background required to pursue my future degree in the tech and data fields."
-    },
-    {
         year: "2025",
         title: "IT Varsity",
         subtitle: "National Certificate(NQF 5) in Fullstack Development",
