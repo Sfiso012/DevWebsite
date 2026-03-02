@@ -263,7 +263,7 @@ export default function Contact() {
                     className="text-center mt-16 pt-8 border-t border-gray-800"
                 >
                     <p className="text-gray-500 text-sm">
-                        Crafted with 💚 and curiosity by <span className="text-white font-semibold">Emmanuel Sfiso Nkosi</span> • {new Date().getFullYear()}
+                        Crafted with 💚 and curiosity by <span className="text-white font-semibold">Emmanuel Sfiso Nkosi</span> • {2025}
                     </p>
                 </motion.div>
             </div>
