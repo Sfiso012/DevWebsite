@@ -72,7 +72,7 @@ export default function Contact() {
         },
         {
             icon: <Github className="w-4 h-4" />,
-            href: "https://github.com/Sfiso505",
+            href: "https://github.com/SfisoDev-hub",
             label: "GitHub"
         },
         {
